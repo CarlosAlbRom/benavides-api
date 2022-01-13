@@ -13,7 +13,7 @@ export class ArticleController {
 
     @Get()
     public getCategories(): Promise<APIResponse>{
-        return this.articleService.getCategories().then((res) => {
+        return this.articleService.getArticles().then((res) => {
             return new APIResponse().success(null, res);
         })
     }
@@ -28,6 +28,13 @@ export class ArticleController {
             } else {
                 return new APIResponse().error("No Article found")
             }
+        })
+    }
+
+    @Get('featured')
+    public getFeaturedArticles(): Promise<APIResponse>{
+        return this.articleService.getFeaturedArticles().then((res) => {
+            return new APIResponse().success(null, res)
         })
     }
 

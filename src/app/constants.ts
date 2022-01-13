@@ -7,17 +7,26 @@ export const jwtConstants = {
     secret: "TheLongerTheTextTheBetterItBecomesYaKnowSoKeepItGoingEvenFurtherBeyond"
 }
 
+// export const typeOrmConfig: TypeOrmModuleOptions = {
+//     type: "mysql",
+//     host: "localhost",
+//     port: 3306,
+//     username: "root",
+//     password: "admin",
+//     database: "pinturas_benavides_db",
+//     entities: [],
+//     synchronize: true,
+//     autoLoadEntities: true
+// }
+
 export const typeOrmConfig: TypeOrmModuleOptions = {
     type: "mysql",
     host: "localhost",
     port: 3306,
-    username: "root",
-    password: "admin",
-    database: "pinturas_benavides_db",
-    entities: [
-        User,
-        Department
-    ],
+    entities: [],
+    username: "pruebada_pinturas_benavides",
+    password: "#RQJWwW&eroM",
+    database: "pruebada_pinturas_benavides_db",
     synchronize: true,
     autoLoadEntities: true
 }

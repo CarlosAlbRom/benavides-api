@@ -10,12 +10,18 @@ export class ArticleService {
         @InjectRepository(Article) private articleRepo: Repository<Article>,
     ){}
 
-    public getCategories(){
+    public getArticles(){
         return this.articleRepo.find();
     }
 
     public getArticleById(id: number){
         return this.articleRepo.findOne(id);
+    }
+
+    public getFeaturedArticles(){
+        return this.articleRepo.find({where: {
+            featured: true
+        }})
     }
 
     public createArticle(

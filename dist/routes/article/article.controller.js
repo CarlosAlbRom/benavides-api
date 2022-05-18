@@ -26,19 +26,31 @@ let ArticleController = class ArticleController {
             return new response_model_1.APIResponse().success(null, res);
         });
     }
+    getFeaturedArticles() {
+        return this.articleService.getFeaturedArticles().then((res) => {
+            return new response_model_1.APIResponse().success(null, res);
+        });
+    }
+    getRelatedArticles(articleId, categoryId) {
+        return this.articleService.getRelatedArticles(categoryId).then((res) => {
+            let i = res.findIndex((e) => e.id_article == articleId);
+            if (i >= 0) {
+                res.splice(i, 1);
+            }
+            if (res.length > 4) {
+                res.pop();
+            }
+            return new response_model_1.APIResponse().success(null, res);
+        });
+    }
     getArticleById(id) {
         return this.articleService.getArticleById(id).then((res) => {
             if (res) {
                 return new response_model_1.APIResponse().success("", res);
             }
             else {
-                return new response_model_1.APIResponse().error("No Article found");
+                return new response_model_1.APIResponse().error("No article found");
             }
-        });
-    }
-    getFeaturedArticles() {
-        return this.articleService.getFeaturedArticles().then((res) => {
-            return new response_model_1.APIResponse().success(null, res);
         });
     }
     createArticle(idDepartment, name, code, idCategory, description, featured, price) {
@@ -75,18 +87,26 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ArticleController.prototype, "getCategories", null);
 __decorate([
+    (0, common_1.Get)('featured'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], ArticleController.prototype, "getFeaturedArticles", null);
+__decorate([
+    (0, common_1.Get)('related/:idArticle/:idCategory'),
+    __param(0, (0, common_1.Param)('idArticle')),
+    __param(1, (0, common_1.Param)('idCategory')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Number]),
+    __metadata("design:returntype", Promise)
+], ArticleController.prototype, "getRelatedArticles", null);
+__decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ArticleController.prototype, "getArticleById", null);
-__decorate([
-    (0, common_1.Get)('featured'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], ArticleController.prototype, "getFeaturedArticles", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Post)(),

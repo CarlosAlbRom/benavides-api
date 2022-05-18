@@ -38,4 +38,8 @@ export class Color extends BaseEntity{
     @IsString()
     hex: string;
 
+    @Column()
+    @IsNumber()
+    type: number
+
 }

@@ -32,6 +32,14 @@ let ArticleService = class ArticleService {
                 featured: true
             } });
     }
+    getRelatedArticles(categoryId) {
+        return this.articleRepo.find({
+            where: {
+                id_category: categoryId
+            },
+            take: 5,
+        });
+    }
     createArticle(name, code, idDeparment, idCategory, description, featured, price) {
         return this.articleRepo.save({
             code: code,

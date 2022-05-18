@@ -26,6 +26,11 @@ let ColorController = class ColorController {
             return new response_model_1.APIResponse().success(null, res);
         });
     }
+    getColorByType(type) {
+        return this.colorService.getColorByType(type).then((res) => {
+            return new response_model_1.APIResponse().success(null, res);
+        });
+    }
     getColorById(id) {
         return this.colorService.getColorById(id).then((res) => {
             if (res) {
@@ -64,6 +69,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], ColorController.prototype, "getColors", null);
+__decorate([
+    (0, common_1.Get)('type/:type'),
+    __param(0, (0, common_1.Param)('type')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], ColorController.prototype, "getColorByType", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),

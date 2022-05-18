@@ -18,6 +18,30 @@ export class ArticleController {
         })
     }
 
+    @Get('featured')
+    public getFeaturedArticles(): Promise<APIResponse>{
+        return this.articleService.getFeaturedArticles().then((res) => {
+            return new APIResponse().success(null, res)
+        })
+    }
+
+    @Get('related/:idArticle/:idCategory')
+    public getRelatedArticles(
+        @Param('idArticle') articleId: number,
+        @Param('idCategory') categoryId: number
+    ): Promise<APIResponse>{
+        return this.articleService.getRelatedArticles(categoryId).then((res) => {
+            let i = res.findIndex((e) => e.id_article == articleId)
+            if (i >= 0) {
+                res.splice(i, 1)
+            }
+            if (res.length > 4) {
+                res.pop();
+            }
+            return new APIResponse().success(null, res);
+        })
+    }
+
     @Get(':id')
     public getArticleById(
         @Param('id') id: number
@@ -26,15 +50,8 @@ export class ArticleController {
             if (res) {
                 return new APIResponse().success("", res);
             } else {
-                return new APIResponse().error("No Article found")
+                return new APIResponse().error("No article found")
             }
-        })
-    }
-
-    @Get('featured')
-    public getFeaturedArticles(): Promise<APIResponse>{
-        return this.articleService.getFeaturedArticles().then((res) => {
-            return new APIResponse().success(null, res)
         })
     }
 

@@ -4,4 +4,5 @@ export declare class Color extends BaseEntity {
     name: string;
     code: string;
     hex: string;
+    type: number;
 }

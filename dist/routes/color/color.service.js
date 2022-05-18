@@ -22,7 +22,18 @@ let ColorService = class ColorService {
         this.colorRepo = colorRepo;
     }
     getColors() {
-        return this.colorRepo.find();
+        return this.colorRepo.find({
+            order: {
+                id_color: 'DESC'
+            }
+        });
+    }
+    getColorByType(type) {
+        return this.colorRepo.find({
+            where: {
+                type: type
+            }
+        });
     }
     getColorById(id) {
         return this.colorRepo.findOne(id);

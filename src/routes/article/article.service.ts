@@ -24,6 +24,16 @@ export class ArticleService {
         }})
     }
 
+    public getRelatedArticles(categoryId: number){
+        return this.articleRepo.find({
+            where: {
+                id_category: categoryId
+            },
+            take: 5,
+
+        })
+    }
+
     public createArticle(
         name: string, 
         code: string, 

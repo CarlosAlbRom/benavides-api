@@ -4,6 +4,7 @@ export declare class ColorService {
     private colorRepo;
     constructor(colorRepo: Repository<Color>);
     getColors(): Promise<Color[]>;
+    getColorByType(type: number): Promise<Color[]>;
     getColorById(id: number): Promise<Color>;
     getMultipleColorsById(ids: number[]): Promise<Color[]>;
     createColor(name: string, code: string, hex: string): Promise<{

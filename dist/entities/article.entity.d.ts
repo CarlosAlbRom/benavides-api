@@ -9,4 +9,5 @@ export declare class Article extends BaseEntity {
     description: string;
     price: number;
     featured: boolean;
+    type: number;
 }

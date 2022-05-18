@@ -17,6 +17,15 @@ export class ColorController {
         })
     }
 
+    @Get('type/:type')
+    public getColorByType(
+        @Param('type') type: number
+    ): Promise<APIResponse>{
+        return this.colorService.getColorByType(type).then((res) => {
+            return new APIResponse().success(null, res);
+        })
+    }
+
     @Get(':id')
     public getColorById(
         @Param('id') id: number

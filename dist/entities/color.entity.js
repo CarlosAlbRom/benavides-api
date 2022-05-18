@@ -47,6 +47,11 @@ __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], Color.prototype, "hex", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, class_validator_4.IsNumber)(),
+    __metadata("design:type", Number)
+], Color.prototype, "type", void 0);
 Color = __decorate([
     (0, typeorm_4.Unique)('color', [
         'name',

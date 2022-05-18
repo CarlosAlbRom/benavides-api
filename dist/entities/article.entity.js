@@ -72,6 +72,11 @@ __decorate([
     (0, class_validator_1.IsBoolean)(),
     __metadata("design:type", Boolean)
 ], Article.prototype, "featured", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, class_validator_4.IsNumber)(),
+    __metadata("design:type", Number)
+], Article.prototype, "type", void 0);
 Article = __decorate([
     (0, typeorm_4.Unique)('article', [
         'name',

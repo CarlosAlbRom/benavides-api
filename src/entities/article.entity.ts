@@ -50,11 +50,18 @@ export class Article extends BaseEntity{
     description: string;
 
     @Column()
-    @IsNumber()
+    @IsNumber({
+        maxDecimalPlaces: 3
+    })
     price: number;
 
     @Column()
     @IsBoolean()
     featured: boolean;
+
+    @Column()
+    @IsNumber()
+    type: number;
+
 
 }

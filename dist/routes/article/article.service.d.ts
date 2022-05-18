@@ -6,6 +6,7 @@ export declare class ArticleService {
     getArticles(): Promise<Article[]>;
     getArticleById(id: number): Promise<Article>;
     getFeaturedArticles(): Promise<Article[]>;
+    getRelatedArticles(categoryId: number): Promise<Article[]>;
     createArticle(name: string, code: string, idDeparment: number, idCategory: number, description: string, featured: boolean, price: number): Promise<{
         code: string;
         name: string;

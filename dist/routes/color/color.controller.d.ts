@@ -4,6 +4,7 @@ export declare class ColorController {
     private readonly colorService;
     constructor(colorService: ColorService);
     getColors(): Promise<APIResponse>;
+    getColorByType(type: number): Promise<APIResponse>;
     getColorById(id: number): Promise<APIResponse>;
     createColor(name: string, code: string, hex: string): Promise<APIResponse>;
     updateColor(id: number, name: string, code: string, hex: string): Promise<APIResponse>;

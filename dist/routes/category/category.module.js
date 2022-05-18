@@ -11,7 +11,6 @@ const jwt_strategy_1 = require("./../../strategies/jwt.strategy");
 const department_entity_1 = require("./../../entities/department.entity");
 const typeorm_1 = require("@nestjs/typeorm");
 const common_1 = require("@nestjs/common");
-const constants_1 = require("../../app/constants");
 const category_controller_1 = require("./category.controller");
 const category_service_1 = require("./category.service");
 const category_entity_1 = require("../../entities/category.entity");

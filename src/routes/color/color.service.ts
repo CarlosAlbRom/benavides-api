@@ -11,7 +11,19 @@ export class ColorService {
     ){}
 
     public getColors(){
-        return this.colorRepo.find();
+        return this.colorRepo.find({
+            order: {
+                id_color: 'DESC'
+            }
+        });
+    }
+
+    public getColorByType(type: number){
+        return this.colorRepo.find({
+            where: {
+                type: type
+            }
+        })
     }
 
     public getColorById(id: number){
